@@ -1,0 +1,11 @@
+users:
+  - name: testuser1010101
+    email: testuser1010101@123.com
+    password: 123
+    role: author
+  - name: testuser2020202
+    email: testuser2020202@123.com
+    password: 123
+    role: author
+
+

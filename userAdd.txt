@@ -1,0 +1,27 @@
+---
+
+- name: update permissions of wp-cli to allow anyone to execute it 
+  file: path=/usr/local/bin/wp mode="0755"
+  
+- name: create a test user
+  shell: /usr/local/bin/wp/wp-cli.phar user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path=/var/www/wp
+  with_items:
+     - { name: 'testuser0003', email: 'testuser0003@123.com', password: 123, role: author }
+	 - { name: 'testuser0004', email: 'testuser0004@123.com', password: 123, role: author }
+  
+- name: update password
+  shell: /usr/local/bin/wp/wp-cli.phar user update jonnylaces --user_pass=123
+
+  
+- name: create a test user
+  shell: /usr/local/bin/wp/wp-cli.phar user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path={{ path }}
+  with_items: "{{users}}"
+
+---
+#template to create a user takes from the users.yml file and the path variable in the playbook
+- name: create a user
+  shell: /usr/local/bin/wp/wp-cli.phar user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} -$
+  with_items: "{{users}}"
+  tags: add
+
+  

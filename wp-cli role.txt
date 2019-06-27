@@ -1,0 +1,23 @@
+---
+
+- name: make WP-CLI directory
+  file: path=/usr/local/bin/wp state=directory
+
+- name: Download WP-CLI
+  shell: wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+- name: Make WP-CLI executable
+  file:
+    path: /home/projectFolder/wp-cli.phar
+    mode: u=rwx,g=rx,o=rx
+
+- name: Move WP-CLI to /usr/local/bin/wp
+  command: mv /home/projectFolder/wp-cli.phar /usr/local/bin/wp
+  
+  
+ 
+
+
+  
+
+  

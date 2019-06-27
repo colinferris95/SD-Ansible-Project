@@ -1,0 +1,17 @@
+
+  //dependencies for wp-cli
+
+
+---
+
+  # install multiple WP-CLI dependencies
+  - yum: pkg=https://mirror.webtatic.com/yum/el6/latest.rpm state=installed
+
+  # install php 5
+  - yum: pkg=php state=installed
+  - yum: pkg=php-mysql state=installed
+
+  # install mysql
+  - yum: pkg=mysql state=installed
+  - yum: pkg=mysql-serverstate=installed
+

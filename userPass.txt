@@ -1,0 +1,3 @@
+item:
+	- { name: 'testuser0003', email: 'testuser0003@123.com', password: 123 }
+	- { name: 'testuser0004', email: 'testuser0004@123.com', password: 123 }

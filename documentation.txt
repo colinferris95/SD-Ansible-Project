@@ -1,0 +1,75 @@
+Documentation for ansible wp-cli
+
+using vagrant with vm ware
+box- puppetlabs/centos-6.6-32-puppet
+
+various vagrant commands
+mkdir
+cd
+vagrant init
+vagrant box add
+vagrant up
+vagrant ssh
+
+putty and puttygen
+
+once in:
+
+install git
+
+sudo yum install git
+
+then install ansible
+
+git clone git://github.com/ansible/ansible.git --recursive
+cd ./ansible
+source ./hacking/env-setup
+
+
+
+
+#!/bin/bash
+rpm -ivh -y http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.n$
+yum install  python-pip
+pip install  six
+pip install  pyyaml
+pip install  jinja2
+
+
+alias install='/usr/local/bin/install'
+possibly make this into a script?
+
+
+nano ~/.bashrc
+
+printf "alias wp='/usr/local/bin/wp/wp-cli.phar'" >> /.bashrc
+alias wp='/usr/local/bin/wp/wp-cli.phar'
+. ~/.bashrc
+
+make a project folder directory
+
+make a group_vars directory make a hosts file, a playbook.yml and a roles directory
+
+run ansible locally
+
+ansible all -i "localhost", -c local -m shell -a 'echo hello world'
+
+ansible-playbook -i "localhost," -c local playbook.yml --tags " "
+
+wp core download --path=/var/www/msp
+
+
+wp core install --url=localhost --title=testSite --admin_user=test --admin_password=test --admin_email=test@user.com
+
+
+/sbin/service mysqld start
+
+mysql> GRANT ALL PRIVILEGES ON databasename.* TO "wordpressusername"@"hostname"
+    -> IDENTIFIED BY "password";
+flush privileges
+
+wp core install --url=localhost --title=testSite2 --admin_user=test2 --admin_password=test2 --admin_email=test2@user.com
+
+wp core install --url=localhost --title=mspsite --admin_user=mspuser --admin_password=msp --admin_email=mspuser@msp.com
+
+wp core install --url=localhost --title=skaddensite --admin_user=skaddenuser --admin_password=skadden --admin_email=skaddenuser@skadden.com

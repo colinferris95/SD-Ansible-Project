@@ -1,0 +1,25 @@
+---
+#This file will run the roles wp-cli, alias, and userAdd which will
+#set up wp-cli and create users.
+
+- name: downloads and moves wp-cli.phar, install wp-cli and alias for wp
+  hosts: 127.0.0.1
+  user: root
+  roles:
+    - wp-cli
+    - alias
+
+- name: Creates users for msp
+  hosts: 127.0.0.1
+  user: testuser
+  roles:
+    - userAdd
+    - passwdUpdate
+    - userDelete
+  vars:
+    path: /var/www/msp
+  vars_files:
+    - /home/projectFolder/users/usersA.yml
+    - /home/projectFolder/users/usersB.yml
+
+

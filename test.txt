@@ -1,0 +1,11 @@
+
+---
+
+- name: alias 
+  action: shell printf "alias wp='/usr/local/bin/wp/wp-cli.phar'" >> ~/.bashrc
+
+- name: run the file
+  action: shell . ~/.bashrc
+  
+
+  
